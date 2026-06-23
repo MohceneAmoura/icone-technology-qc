@@ -1,0 +1,152 @@
+:root {
+  font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  /* Default to light mode variables */
+  --bg-primary: hsl(210, 40%, 98%);
+  --bg-secondary: hsl(210, 20%, 95%);
+  --bg-card: hsla(0, 0%, 100%, 0.85);
+  --bg-card-hover: hsla(210, 20%, 98%, 0.95);
+  --border-color: hsla(217, 20%, 75%, 0.6);
+  --border-glow: hsla(217, 100%, 60%, 0.15);
+
+  --text-primary: hsl(222, 47%, 11%);
+  --text-secondary: hsl(215, 12%, 45%);
+  --text-muted: hsl(215, 10%, 55%);
+
+  --primary: hsl(210, 100%, 56%);
+  --primary-hover: hsl(210, 100%, 65%);
+  --primary-glow: hsla(210, 100%, 56%, 0.35);
+
+  --success: hsl(145, 63%, 42%);
+  --success-glow: hsla(145, 63%, 42%, 0.25);
+  --success-bg: hsla(145, 63%, 42%, 0.1);
+
+  --warning: hsl(38, 92%, 50%);
+  --warning-glow: hsla(38, 92%, 50%, 0.25);
+  --warning-bg: hsla(38, 92%, 50%, 0.1);
+
+  --danger: hsl(354, 70%, 54%);
+  --danger-glow: hsla(354, 70%, 54%, 0.25);
+  --danger-bg: hsla(354, 70%, 54%, 0.1);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.15);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+}
+
+/* Light mode styles (explicit class for consistency) */
+body.light-mode {
+  --bg-primary: hsl(210, 40%, 98%);
+  --bg-secondary: hsl(210, 20%, 95%);
+  --bg-card: hsla(0, 0%, 100%, 0.85);
+  --bg-card-hover: hsla(210, 20%, 98%, 0.95);
+  --border-color: hsla(217, 20%, 75%, 0.6);
+  --text-primary: hsl(222, 47%, 11%);
+  --text-secondary: hsl(215, 12%, 45%);
+  --text-muted: hsl(215, 10%, 55%);
+  --success-bg: hsla(145, 63%, 42%, 0.1);
+  --warning-bg: hsla(38, 92%, 50%, 0.1);
+  --danger-bg: hsla(354, 70%, 54%, 0.1);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  --bg-primary: hsl(222, 47%, 11%);
+  --bg-secondary: hsl(223, 47%, 7%);
+  --bg-card: hsla(223, 40%, 15%, 0.65);
+  --bg-card-hover: hsla(223, 40%, 18%, 0.8);
+  --border-color: hsla(217, 30%, 30%, 0.35);
+  --text-primary: hsl(210, 40%, 98%);
+  --text-secondary: hsl(215, 20%, 75%);
+  --text-muted: hsl(215, 12%, 55%);
+  --success-bg: hsla(145, 63%, 42%, 0.15);
+  --warning-bg: hsla(38, 92%, 50%, 0.15);
+  --danger-bg: hsla(354, 70%, 54%, 0.15);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Background gradients for both modes */
+body:not(.dark-mode) {
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(210, 100%, 90%, 1) 0, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(210, 100%, 85%, 0.3) 0, transparent 50%),
+    radial-gradient(at 50% 100%, hsla(220, 100%, 85%, 0.4) 0, transparent 50%);
+}
+
+body.dark-mode {
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(222, 47%, 11%, 1) 0, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(210, 100%, 20%, 0.2) 0, transparent 50%),
+    radial-gradient(at 50% 100%, hsla(220, 100%, 15%, 0.3) 0, transparent 50%);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 15px var(--border-glow); }
+  50% { box-shadow: 0 0 25px var(--primary-glow); }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(30px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-in {
+  animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
